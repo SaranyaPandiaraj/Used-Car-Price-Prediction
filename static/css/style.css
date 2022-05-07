@@ -1,0 +1,78 @@
+body{
+	
+  background-image:url("/static/images/images.jpeg");
+  background-size: cover; /* Resize the background image to cover the entire container */
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color:white;
+  }
+
+.cart td{padding-left: 90px; padding-right: 90px; }
+
+.car {background-image:url("/static/images/car.png"); background-position: center; height:200px; width: 200px;}
+
+.result tr, .result td { padding: 5px; border: solid 1px #777; margin-left:100px}
+
+Form {align:center}
+strong {font-size:1.5em}
+  
+label { 
+    margin-right: 20px; 
+    font-weight:bold;
+} 
+
+h4 {text-align:center;}
+
+
+input[type=number], input, select {
+
+  padding: 10px 10px;s
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+ 
+}
+
+
+
+
+input[type=submit]:hover {
+  opacity: 0.8;
+}
+
+
+
+
+
+table {
+  border-collapse: collapse;
+
+  text-align: center;
+}
+
+th{text-align: center;}
+
+
+
+input[type=submit] {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-weight:bold;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.row {
+  font-size: 17px;
+  color:#43C6DB
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+

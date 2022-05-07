@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Used Car Price Prediction</title>
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}" />
+   </head>
+   <body>
+      <center>
+      <h2>Used Car Price Prediction</h2>
+      <hr>
+      </hr>
+      <center>
+         Enter the Details Of the Car for Predicting the Price</b></p>
+	<hr>
+
+	<table>
+	<tr><td></br></br>
+         <form method="post" action="/predict">
+	&emsp;&emsp;&emsp;
+            <label>Make Name </label>
+            <input list="browsers" name="make" id="make" placeholder="Make Name">
+            <datalist id="browsers">
+               <option value="Jeep">
+               <option value="Land Rover">
+               <option value="Mazda">
+               <option value="Hyundai">
+               <option value="Chevrolet">
+               <option value="Lexus">
+               <option value="Cadillac">
+               <option value="Chrysler">
+               <option value="Dodge">
+               <option value="Mercedes-Benz">
+               <option value="Nissan">
+               <option value="Honda">
+               <option value="Kia">
+               <option value="Ford">
+               <option value="Subaru">
+               <option value="BMW">
+               <option value="Audi">
+               <option value="Volkswagen">
+               <option value="Jaguar">
+               <option value="Porsche">
+               <option value="GMC">
+               <option value="Toyota">
+               <option value="Acura">
+               <option value="INFINITI">
+               <option value="Lincoln">
+               <option value="RAM">
+               <option value="Volvo">
+               <option value="Mitsubishi">
+               <option value="Buick">
+               <option value="Mercury">
+               <option value="Scion">
+               <option value="Saab">
+               <option value="Maserati">
+               <option value="MINI">
+               <option value="Genesis">
+               <option value="Saturn">
+               <option value="FIAT">
+               <option value="Suzuki">
+               <option value="Fisker">
+               <option value="Pontiac">
+               <option value="Alfa Romeo">
+               <option value="Bentley">
+               <option value="Hummer">
+               <option value="Maybach">
+               <option value="Aston Martin">
+               <option value="Oldsmobile">
+               <option value="Rolls-Royce">
+            </datalist>
+		</td> <td></br>
+	    &emsp; &emsp;&emsp;
+            <label>Transmission Type</label> 
+            <select name="transmission" id="transmission" required="required" >
+	       <option value="" disabled selected> Select your Option   </option>
+               <option value="Automatic">Automatic</option>
+               <option value="CVT">CVT</option>
+               <option value="Dual Clutch">Dual Clutch</option>
+               <option value="Manual">Manual</option>
+            </select>
+	    </td></tr> 
+	    <tr>
+		<td>
+            </br></br>&emsp;&emsp;&emsp;&emsp;
+            <label>&nbsp;&nbsp;Mileage  </label> 
+            <input type="number" id="mileage" name="mileage" placeholder="Mileage in kmpl" step="0.01" required="required">
+		</td><td>
+	</br></br>
+	   &emsp;&emsp; &emsp;&emsp; &emsp; &emsp;
+            <label>Horse Power  </label>
+            <input type="number" id="horsepower" name="horsepower" placeholder="Horse Power in bhp" step="0.01" required="required">
+            <br>
+              </td></tr>
+            <tr><td>
+		</br></br>
+            <label>&nbsp;&nbsp;Year of Purchase </label>
+            <input type="number" id="year" name="year" required="required" placeholder="Year of Purchase" >
+		</td>
+             <td>
+		</br></br>
+	   &emsp;&emsp; &emsp;&emsp; &emsp; &emsp; &emsp;
+            <label>Wheelbase</label>
+	    <input type="number" id="wheelbase" name="wheelbase" placeholder="Wheelbase in inches" step="0.01" required="required">
+	
+	    </td></tr>
+            
+		</table>
+		</br>
+            <p><input type="submit" value="Check for Price" /></p>
+         </form>
+         </div>
+      </center>
+	
+      <center>
+         <div class="row">
+            {% autoescape false %}
+            <b style='color:black'> {{ prediction	 }} </b>
+            {% endautoescape %}
+         </div>
+      </center>
+   </body>
+</html>
