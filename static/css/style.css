@@ -26,8 +26,9 @@ h4 {text-align:center;}
 
 input[type=number], input, select {
 
-  padding: 10px 10px;s
+  padding: 10px 10px;
   margin: 8px 0;
+  width: 160px;
   border: 1px solid #ccc;
   box-sizing: border-box;
  
