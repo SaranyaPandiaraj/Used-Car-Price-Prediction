@@ -19,6 +19,7 @@ def home():
 @cross_origin()
 def predict():
 	name = 0
+	body = 0
 
 	if request.method == 'POST':
 
@@ -122,7 +123,25 @@ def predict():
 		year = request.form['year']
 		mileage = request.form['mileage']
 		horsepower = request.form['horsepower']
-		wheelbase = request.form['wheelbase']
+		body_type = request.form['body']
+		if body_type == 'SUV':
+			body =5
+		elif body_type =='Sedan':
+			body =6
+		elif body_type =='Coupe':
+			body =1
+		elif body_type =='Pickup Truck':
+			body =4
+		elif body_type =='Wagon':
+			body =8
+		elif body_type =='Minivan':
+			body =3
+		elif body_type =='Hatchback':
+			body =2
+		elif body_type =='Convertible':
+			body =0
+		else:
+	 		body =7
 
 		transmission_type = request.form['transmission']
 		if transmission_type == 'Automatic':
@@ -136,12 +155,12 @@ def predict():
 
 		
 
-		Price = model_pred.predict([[horsepower, mileage, year, name, wheelbase, transmission]])
+		Price = model_pred.predict([[horsepower, mileage, year, name, body, transmission]])
 		
 
 		pred_price=round(Price[0],2)
 
-		return render_template('Used_Car_Price_Prediction.html', prediction ="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; The Predicted Price of your Vehicle is $<i>{}</I>. <br><br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; This price is subject to fluctuate based on the vehicle's condition. </br></br> <table class=\"cart\" align=\"right\"> <td> <table class=\"result\" > <tr> <td> Make  </td> <td> {} </td> </tr> <tr> <td>Transmission  </td> <td> {} </td>  </tr><tr> <td>Horse Power  </td><td> {} (bhp) </td> </tr><tr> <td>Mileage  </td><td>{} (kmpl) </td> <tr/<tr><td>Wheel Base  </td><td>{} (inch) </td> <tr/> <tr> <td> Year  </td> <td>{} </td> </tr> </table> </td>  <td>  <div class=\"car\"></div> </td></table>".format(pred_price, make_name, transmission_type, horsepower, mileage, wheelbase, year))
+		return render_template('Used_Car_Price_Prediction.html', prediction ="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; The Predicted Price of your Vehicle is $<i>{}</I>. <br><br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; This price is subject to fluctuate based on the vehicle's condition. </br></br> <table class=\"cart\" align=\"right\"> <td> <table class=\"result\" > <tr> <td> Make  </td> <td> {} </td> </tr> <tr> <td>Transmission  </td> <td> {} </td>  </tr><tr> <td>Horse Power  </td><td> {} (bhp) </td> </tr><tr> <td>Mileage  </td><td>{} (kmpl) </td> <tr/<tr><td>Body Type  </td><td>{} </td> <tr/> <tr> <td> Year  </td> <td>{} </td> </tr> </table> </td>  <td>  <div class=\"car\"></div> </td></table>".format(pred_price, make_name, transmission_type, horsepower, mileage, body_type, year))
 
 	return render_template("Used_Car_Price_Prediction.html")
 

@@ -16,7 +16,7 @@
 	<table>
 	<tr><td></br></br>
          <form method="post" action="/predict">
-	&emsp;&emsp;&emsp;
+	&emsp;&emsp;&emsp;&emsp;
             <label>Make Name </label>
             <input list="browsers" name="make" id="make" placeholder="Make Name">
             <datalist id="browsers">
@@ -81,7 +81,7 @@
 	    </td></tr> 
 	    <tr>
 		<td>
-            </br></br>&emsp;&emsp;&emsp;&emsp;
+            </br></br>&emsp;&emsp;&emsp;&emsp;&emsp;
             <label>&nbsp;&nbsp;Mileage  </label> 
             <input type="number" id="mileage" name="mileage" placeholder="Mileage in kmpl" step="0.01" required="required">
 		</td><td>
@@ -93,14 +93,25 @@
               </td></tr>
             <tr><td>
 		</br></br>
-            <label>&nbsp;&nbsp;Year of Purchase </label>
-            <input type="number" id="year" name="year" required="required" placeholder="Year of Purchase" >
+            <label>Year of Manufacture</label>
+            <input type="number" id="year" name="year" required="required" placeholder="Year of Manufacture" >
 		</td>
              <td>
 		</br></br>
-	   &emsp;&emsp; &emsp;&emsp; &emsp; &emsp; &emsp;
-            <label>Wheelbase</label>
-	    <input type="number" id="wheelbase" name="wheelbase" placeholder="Wheelbase in inches" step="0.01" required="required">
+	   &emsp;&emsp; &emsp;&emsp; &emsp; &emsp; &nbsp;
+            <label>Body Type</label>
+	    <select name="body" id="body" required="required" >
+	       <option value="" disabled selected> Select your Option   </option>
+               <option value="SUV">SUV</option>
+               <option value="Sedan">Sedan</option>
+               <option value="Coupe">Coupe</option>
+               <option value="Pickup Truck">Pickup truck</option>
+	      <option value="Wagon">Wagon</option>
+	      <option value="Minivan">Minivan</option>
+	      <option value="Hatchback"> Hatchback </option>
+               <option value="Convertible"> Convertible </option>
+               <option value="Van">Van</option>
+            </select>
 	
 	    </td></tr>
             

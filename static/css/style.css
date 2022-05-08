@@ -1,6 +1,7 @@
 body{
 	
   background-image:url("/static/images/images.jpeg");
+  Background-position:80% 20%;
   background-size: cover; /* Resize the background image to cover the entire container */
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   color:white;
