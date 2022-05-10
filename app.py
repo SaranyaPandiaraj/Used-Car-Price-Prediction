@@ -3,7 +3,6 @@ from flask_cors import cross_origin
 import pickle
 from flask import Flask, flash, redirect, render_template, request, session, abort
 import os
-import cgi, cgitb, jinja2
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from tabledef import *
