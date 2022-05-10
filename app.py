@@ -1,3 +1,6 @@
+############################################################# Importing Packages ###########################################################  
+
+
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
 import pickle
@@ -22,6 +25,7 @@ app = Flask(__name__)
 engine = create_engine('sqlite:///logindb.db', echo=True)
 cgitb.enable()
 
+############################################################# Home Page Route ###########################################################  
 
 @app.route('/')
 def home():
@@ -30,6 +34,7 @@ def home():
     else:
         return render_template('login.html')
 
+############################################################# Login Route ###########################################################  
 
 @app.route('/login', methods=['POST'])
 def do_admin_login():
@@ -46,6 +51,8 @@ def do_admin_login():
     else:
         session['logged_in']=True
         return render_template("Used_Car_Price_Prediction.html")
+
+############################################################# Sign Up Route ###########################################################  
 
 @app.route('/signup', methods=['POST'])
 def signin():
@@ -65,6 +72,7 @@ def signin():
         s.commit()
         return home()
 
+############################################################# PREDICT Route ###########################################################  
 
 
 @app.route("/predict", methods=["GET","POST"])
