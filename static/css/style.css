@@ -55,7 +55,7 @@ th{text-align: center;}
 
 
 
-input[type=submit] {
+.predict {
   display: inline-block;
   border-radius: 5px;
   background-color: #4CAF50;
@@ -67,6 +67,22 @@ input[type=submit] {
   padding: 20px;
   width: 180px;
   transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.logout {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-weight:bold;
+  text-align: center;
+  font-size: 12px;
+  width: 100px;
+  transition: all 0.10s;
   cursor: pointer;
   margin: 5px;
   font-family: "Comic Sans MS", "Comic Sans", cursive;

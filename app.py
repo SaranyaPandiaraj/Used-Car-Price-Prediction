@@ -1,19 +1,72 @@
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
 import pickle
+from flask import Flask, flash, redirect, render_template, request, session, abort
+import os
+import cgi, cgitb, jinja2
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from tabledef import *
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, flash, request, redirect, url_for
+
 
 #Loading the model
 
 model = open('cat_model.pkl','rb')
 model_pred = pickle.load(model)
 
+
 ############################################################# Flask Calling ###########################################################  
 
 app = Flask(__name__)
+engine = create_engine('sqlite:///logindb.db', echo=True)
+cgitb.enable()
+
+
 @app.route('/')
-@cross_origin()
 def home():
-   return render_template("Used_Car_Price_Prediction.html")
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return render_template('login.html')
+
+
+@app.route('/login', methods=['POST'])
+def do_admin_login():
+    print(request.form['email'])
+    POST_USERNAME = str(request.form['email'])
+    POST_PASSWORD = str(request.form['password'])
+    Session = sessionmaker(bind=engine)
+    s = Session()
+    query = s.query(User).filter(User.email.in_([POST_USERNAME]))
+    result = query.first()
+    if not result or not check_password_hash(result.password, POST_PASSWORD):
+        flash('Please check your login details and try again.')
+        return home()
+    else:
+        session['logged_in']=True
+        return render_template("Used_Car_Price_Prediction.html")
+
+@app.route('/signup', methods=['POST'])
+def signin():
+    USERNAME = str(request.form['uname'])
+    PASSWORD = str(request.form['password'])
+    EMAIL = str(request.form['email'])
+    Session = sessionmaker(bind=engine)
+    s = Session()
+    query = s.query(User).filter(User.username.in_([USERNAME]), User.password.in_([PASSWORD]) )
+    result = query.first()
+    if result:
+        session['logged_in'] = True
+        return render_template("Used_Car_Price_Prediction.html")
+    else:
+        new_user = User(email=EMAIL, username=USERNAME, password=generate_password_hash(PASSWORD, method='sha256'))
+        s.add(new_user)
+        s.commit()
+        return home()
+
+
 
 @app.route("/predict", methods=["GET","POST"])
 @cross_origin()
@@ -165,5 +218,13 @@ def predict():
 	return render_template("Used_Car_Price_Prediction.html")
 
 
+@app.route("/logout", methods=['POST'])
+def logout():
+    session['logged_in'] = False
+    return home()
+
+
+
 if __name__ == '__main__':
-   app.run(debug=True)
+	app.secret_key = os.urandom(12)
+	app.run(ssl_context='adhoc',debug=True,host='172.31.17.213',port=8081)
